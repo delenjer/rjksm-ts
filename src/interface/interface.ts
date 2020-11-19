@@ -46,6 +46,28 @@ export interface IActionArtCollections {
   artItem: IArtCollections;
 }
 
+export interface ILoadingArtItems {
+  pageSize: number;
+  totalPicturesCount: number;
+  currentPage: number;
+}
+
 export interface IState {
-  artCollections: IArtCollections
+  artCollections: IArtCollections;
+  loadingArtItems: ILoadingArtItems;
+  btnList: {
+    btnList: [],
+    btnText: number,
+  };
+  isLoading: boolean;
+}
+
+export interface IActionSetCurrentPage {
+  type: string;
+  num: number;
+}
+
+export interface IActionIsLoading {
+  type: string;
+  isLoading: boolean;
 }

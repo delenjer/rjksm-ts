@@ -6,8 +6,6 @@ import './App.scss';
 
 const App = () => (
   <div className="App">
-    <h1>React rjksm TS</h1>
-
     <ArtCollections />
   </div>
 );
