@@ -60,6 +60,7 @@ export interface IState {
     btnText: number,
   };
   isLoading: boolean;
+  info: [];
 }
 
 export interface IActionSetCurrentPage {
@@ -70,4 +71,15 @@ export interface IActionSetCurrentPage {
 export interface IActionIsLoading {
   type: string;
   isLoading: boolean;
+}
+
+export interface IActionInfo {
+  type: string;
+  id: string;
+}
+
+export interface IDetail {
+  dateOfBirth: number;
+  name: string;
+  dateOfDeath: number;
 }

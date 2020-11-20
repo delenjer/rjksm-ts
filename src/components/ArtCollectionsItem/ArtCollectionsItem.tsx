@@ -38,7 +38,7 @@ export const ArtCollectionsItem: React.FC<PropsArt> = ({ art }) => {
 
   useEffect(() => {
     loadHighRes(highSrc);
-  }, [highSrc]);
+  }, []);
 
   const loadHighRes = (imageSrc: string) => {
     const image = new Image();

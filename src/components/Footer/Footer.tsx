@@ -10,10 +10,11 @@ import { setLoadItemsOnPage } from '../../store/loadingArtItemsReducer/actions';
 
 type PropsFooter = {
   pagesCount: number;
+  isLoading: boolean;
   handlePageClick(page:{selected: number}): void;
 }
 
-export const Footer: React.FC<PropsFooter> = ({ pagesCount, handlePageClick }) => {
+export const Footer: React.FC<PropsFooter> = ({ pagesCount, handlePageClick, isLoading }) => {
   useSelector((state: IState) => selectors.getBtnList(state));
   const dispatch = useDispatch();
 
@@ -35,7 +36,9 @@ export const Footer: React.FC<PropsFooter> = ({ pagesCount, handlePageClick }) =
 
   return (
     <>
-      <footer className="footer">
+      <footer
+        className={isLoading ? 'hidden footer' : 'footer'}
+      >
         <ReactPaginate
           previousLabel="<"
           nextLabel=">"

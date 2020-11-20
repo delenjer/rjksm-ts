@@ -8,6 +8,10 @@ import artCollectionsReducer, *as selectorsArtCollections from './artCollections
 import loadingArtItemsReducer, *as selectorsLoadingArtItems from './loadingArtItemsReducer/index';
 import btnListReducer, *as selectorsBtnList from './btnListReducer/index';
 import loadReducer, *as selectorsIsLoading from './loadReducer/index';
+import infoReducer, * as selectorsInfo from './infoReducer/index';
+
+export const getInfo = (state: IState) => selectorsInfo
+  .getInfo(state.info);
 
 export const getIsLoading = (state: IState) => selectorsIsLoading
   .getIsLoading(state.isLoading);
@@ -35,6 +39,7 @@ const rootReducer = combineReducers({
   loadingArtItems: loadingArtItemsReducer,
   btnList: btnListReducer,
   isLoading: loadReducer,
+  info: infoReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools(

@@ -12,7 +12,7 @@ import { Footer } from '../Footer/Footer';
 export const ArtCollections: React.FC = () => {
   const artCollections = useSelector((state:IState) => selectors.getArtCollections(state));
   const loadingArtItems = useSelector((state:IState) => selectors.getLoadingArtItems(state));
-  // const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
+  const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
   const dispatch = useDispatch();
 
   const { currentPage, pageSize, totalPicturesCount } = loadingArtItems;
@@ -28,11 +28,18 @@ export const ArtCollections: React.FC = () => {
 
   return (
     <>
-      <main className="wrapper">
-        <ArtCollectionsList artCollections={artCollections} />
-      </main>
+      {
+        !isLoading ? (
+          <main className="wrapper">
+            <ArtCollectionsList artCollections={artCollections} />
+          </main>
+        ) : (
+          <div className="loader">Loading...</div>
+        )
+      }
 
       <Footer
+        isLoading={isLoading}
         pagesCount={pagesCount}
         handlePageClick={handlePageClick}
       />

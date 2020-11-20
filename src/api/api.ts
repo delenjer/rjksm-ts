@@ -9,3 +9,7 @@ const instance = axios.create({
 export const getArtCollections = (currentPage: number, pageSize: number) => instance
   .get(`${BASE_URL}&ps=${pageSize}&p=${currentPage}`)
   .then(resp => resp.data);
+
+export const getInfo = (id: string) => instance
+  .get(`https://www.rijksmuseum.nl/api/en/collection/${id}?key=a7LmWCcH`)
+  .then(resp => resp.data);
