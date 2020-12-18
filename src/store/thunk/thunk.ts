@@ -7,8 +7,8 @@ export const loadingArtCollections = (currentPage: number, pageSize: number) => 
   return (dispatch: (arg: { type: string }) => void) => {
     dispatch(setLoading(true));
     getArtCollections(currentPage, pageSize)
-      .then(data => {
-        dispatch(setArtCollections(data));
+      .then(async data => {
+        dispatch(await setArtCollections(data));
         dispatch(setLoading(false));
       });
   }

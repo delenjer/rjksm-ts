@@ -20,7 +20,7 @@ export const Footer: React.FC<PropsFooter> = ({ pagesCount, handlePageClick, isL
 
   useEffect(() => {
     dispatch(setButtonList(document.querySelectorAll('.load-items__btn')));
-  }, []);
+  }, [dispatch]);
 
   const handleLoadItem = (e:React.MouseEvent<HTMLButtonElement>) => {
     const { innerHTML } = e.target as HTMLButtonElement;

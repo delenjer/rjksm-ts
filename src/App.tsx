@@ -1,7 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-// @ts-ignore
-import { ModalContainer } from 'react-router-modal';
 
 import { Home } from './components/Home/Home';
 import { PopupInfo } from './components/PopupInfo/PopupInfo';
@@ -17,7 +15,6 @@ const App = () => (
       <Route path="/:id" component={Details} />
     </Switch>
 
-    <ModalContainer />
   </div>
 );
 

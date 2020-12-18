@@ -24,7 +24,7 @@ export const ArtCollections: React.FC = () => {
 
   useEffect(() => {
     dispatch(loadingArtCollections(currentPage, pageSize));
-  }, [currentPage, pageSize]);
+  }, [currentPage, pageSize, dispatch]);
 
   return (
     <>

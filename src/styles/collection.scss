@@ -3,7 +3,7 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 10px;
     align-items: center;
   }
@@ -23,15 +23,24 @@
 
   &__item {
     position: relative;
-    height: 180px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 50vh;
 
     &:hover {
       .collection__text {
         transform: scale(1, 1);
       }
     }
+  }
+
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
   }
 }

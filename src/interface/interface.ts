@@ -53,6 +53,7 @@ export interface ILoadingArtItems {
 }
 
 export interface IState {
+  isFavorite: [];
   artCollections: IArtCollections;
   loadingArtItems: ILoadingArtItems;
   btnList: {
@@ -74,6 +75,11 @@ export interface IActionIsLoading {
 }
 
 export interface IActionInfo {
+  type: string;
+  id: string;
+}
+
+export interface IFavorite {
   type: string;
   id: string;
 }

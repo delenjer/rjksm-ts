@@ -1,6 +1,6 @@
-export const SET_LOADING = 'SET_LOADING';
+export const SET_FAVORITE = 'SET_FAVORITE';
 
-export const setLoading = (isLoading: boolean) => ({
-  type: SET_LOADING,
-  isLoading,
+export const setFavorite = (id: string) => ({
+  type: SET_FAVORITE,
+  id,
 });

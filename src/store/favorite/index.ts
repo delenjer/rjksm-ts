@@ -1,16 +1,26 @@
-import { IActionIsLoading } from '../../interface/interface';
-import { SET_LOADING } from './actions';
+import { IFavorite } from '../../interface/interface';
+import { SET_FAVORITE } from './actions';
 
-export const getIsLoading = (state: boolean) => state;
+export const getFavorite = (state: any) => state;
 
-const loadReducer = (isLoading = false, action:IActionIsLoading) => {
+// type propState = {
+//   id: string;
+//   favorite: any;
+// }
+//
+// const initialState: propState = {
+//   id: '',
+//   favorite: [],
+// }
+
+const favoriteReducer = (favorite:any = [], action:IFavorite) => {
   switch (action.type) {
-    case SET_LOADING:
-      return action.isLoading;
+    case SET_FAVORITE:
+      return action.id;
 
     default:
-      return isLoading;
+      return favorite;
   }
 }
 
-export default loadReducer;
+export default favoriteReducer;
