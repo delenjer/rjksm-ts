@@ -1,7 +1,12 @@
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
   padding: 1rem 0;
   margin-bottom: 5vh;
   box-shadow: 1px 6px 16px -2px rgba(0,0,0,0.61);
+  background-color: #fff;
+  z-index: 3;
 
   &__wrap {
     display: flex;
@@ -12,13 +17,7 @@
 
   &__logo {
     display: block;
-    width: 200px;
-  }
-
-  &__logo-img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    color: #000;
   }
 
   &__link {

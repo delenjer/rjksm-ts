@@ -61,6 +61,7 @@ export interface IState {
   };
   isLoading: boolean;
   info: [];
+  id: string;
 }
 
 export interface IActionSetCurrentPage {

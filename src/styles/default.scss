@@ -59,3 +59,20 @@ a {
     object-fit: contain;
   }
 }
+
+.btn-favorite {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: initial;
+  border: none;
+  z-index: 2;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.active-favorite {
+  color: crimson;
+}
