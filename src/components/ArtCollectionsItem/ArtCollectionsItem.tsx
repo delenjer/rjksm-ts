@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
 import { IState } from "../../interface/interface";
 import * as selectors from "../../store/store";
-
-import { Link } from 'react-router-dom';
 import { setFavorite } from '../../store/favorite/actions';
 
 type PropsArt = {
