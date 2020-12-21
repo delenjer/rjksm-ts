@@ -73,8 +73,6 @@ export const ArtCollectionsItem: React.FC<PropsArt> = ({ art }) => {
       // @ts-ignore
       dispatch(setFavorite([...getFavorite.filter((item: any) => item !== id)]));
     }
-
-    // dispatch(setFavorite(id));
   }
 
   return (
