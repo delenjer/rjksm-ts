@@ -3,12 +3,12 @@ import {setArtCollections} from '../artCollectionsReducer/actions';
 import { setLoading } from '../loadReducer/actions';
 import { setInfo } from '../infoReducer/actions';
 
-export const loadingArtCollections = (currentPage: number, pageSize: number) => {
+export const loadingArtCollections = (currentPage: number, pageSize: number, query: string) => {
   return (dispatch: (arg: { type: string }) => void) => {
     dispatch(setLoading(true));
-    getArtCollections(currentPage, pageSize)
-      .then(data => {
-        dispatch(setArtCollections(data));
+    getArtCollections(currentPage, pageSize, query)
+      .then(async data => {
+        dispatch(await setArtCollections(data));
         dispatch(setLoading(false));
       });
   }

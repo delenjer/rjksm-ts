@@ -50,9 +50,11 @@ export interface ILoadingArtItems {
   pageSize: number;
   totalPicturesCount: number;
   currentPage: number;
+  query: string;
 }
 
 export interface IState {
+  isFavorite: [];
   artCollections: IArtCollections;
   loadingArtItems: ILoadingArtItems;
   btnList: {
@@ -62,11 +64,16 @@ export interface IState {
   isLoading: boolean;
   info: [];
   id: string;
+  isFavoriteContent: {
+    imgUrl: [],
+    title: [],
+  }
 }
 
 export interface IActionSetCurrentPage {
   type: string;
   num: number;
+  title: string;
 }
 
 export interface IActionIsLoading {
@@ -79,8 +86,45 @@ export interface IActionInfo {
   id: string;
 }
 
+export interface IFavorite {
+  type: string;
+  id: string;
+  data: boolean,
+}
+
 export interface IDetail {
   dateOfBirth: number;
   name: string;
   dateOfDeath: number;
 }
+
+export interface IArt {
+  art: {
+    links: any,
+    id: string,
+    objectNumber: string,
+    title: string,
+    hasImage: boolean,
+    principalOrFirstMaker: string,
+    longTitle: string,
+    showImage: boolean,
+    permitDownload: boolean,
+    webImage: {
+      guid: string,
+      offsetPercentageX: number,
+      offsetPercentageY: number,
+      width: number,
+      height: number,
+      url: string,
+    },
+    headerImage: {
+      guid: string,
+      offsetPercentageX: number,
+      offsetPercentageY: number,
+      width: number,
+      height: number,
+      url: string,
+    },
+    productionPlaces: any,
+  },
+};

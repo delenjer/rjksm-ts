@@ -6,8 +6,8 @@ const instance = axios.create({
   responseType: 'json',
 });
 
-export const getArtCollections = (currentPage: number, pageSize: number) => instance
-  .get(`${BASE_URL}&ps=${pageSize}&p=${currentPage}`)
+export const getArtCollections = (currentPage: number, pageSize: number, query: string) => instance
+  .get(`${BASE_URL}&ps=${pageSize}&p=${currentPage}&involvedMaker=${query}`)
   .then(resp => resp.data);
 
 export const getInfo = (id: string) => instance

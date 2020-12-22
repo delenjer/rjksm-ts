@@ -13,11 +13,9 @@ export const Details = () => {
   const { id } = useParams();
   const { artObject } = info;
 
-  console.log(artObject);
-
   useEffect(() => {
     dispatch(loadInfo(id));
-  }, []);
+  }, [id, dispatch]);
 
   return (
     <>

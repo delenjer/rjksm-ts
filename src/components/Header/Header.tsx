@@ -1,32 +1,54 @@
-import React from 'react';
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import *as selectors from '../../store/store';
 import { IState } from "../../interface/interface";
+import * as selectors from "../../store/store";
+import { setSearch } from '../../store/loadingArtItemsReducer/actions';
 
 export const Header = () => {
-  // @ts-ignore
+  const [isQuery, setQuery] = useState('');
   const getFavorite = useSelector((state:IState) => selectors.getFavorite(state));
+
+  //@ts-ignore
+  const loadingArtItems = useSelector((state:IState) => selectors.getLoadingArtItems(state));
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    dispatch(setSearch(isQuery));
+    setQuery('');
+  };
 
   return (
     <header className="header">
       <div className="header__wrap">
-        <a href="/"
-           className="header__logo"
-        >
-          Rijksmuseum
-        </a>
+        <Link to="/" className="header__logo">Rijksmuseum</Link>
 
-        <a
-          href="/"
-          className="header__link"
+        <form
+          action="#"
+          onSubmit={(e) => handleSubmit(e)}
         >
-          <span
-            className="header__link--count"
+          <input
+            type="text"
+            placeholder="Search keyword..."
+            value={isQuery}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+
+          <button
+            type="submit"
           >
-            {/*{getFavorite.length}*/}
+            Search
+          </button>
+        </form>
+
+        <Link to="/favorite" className="header__link">
+          <span className="header__link--count">
+            {getFavorite.length}
           </span>
-        </a>
+        </Link>
       </div>
     </header>
   );

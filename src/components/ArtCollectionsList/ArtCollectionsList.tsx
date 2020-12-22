@@ -12,13 +12,19 @@ export const ArtCollectionsList: React.FC<PropsArtCollections> = ({ artCollectio
 
   return (
     <section className="collection">
-      <div className="collection__list">
-        {
-          artObjects && artObjects.map(art => (
-            <ArtCollectionsItem key={art.id} art={art} />
-          ))
-        }
-      </div>
+      {
+        artObjects && artObjects.length < 0 ? (
+          <p>No search person!!!</p>
+        ) : (
+          <div className="collection__list">
+            {
+              artObjects && artObjects.map(art => (
+                <ArtCollectionsItem key={art.id} art={art} />
+              ))
+            }
+          </div>
+        )
+      }
     </section>
   );
 };
