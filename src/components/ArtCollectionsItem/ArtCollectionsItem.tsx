@@ -48,15 +48,26 @@ export const ArtCollectionsItem: React.FC<PropsArt> = ({ art }) => {
   // @ts-ignore
   const getFavorite = useSelector((state:IState) => selectors.getFavorite(state));
 
-  // const helper = () => {
-  //
-  // }
-  //
-  const handleFavorite = (id: string): void => {
-    console.log(id);
+  const helper = (id: string) => {
+    const hasLike = getFavorite.findIndex((item: string) => item === id);
 
+    if (hasLike === -1) {
+      console.log('Hello');
+
+      // return getFavorite;
+    } else {
+      console.log('By-By');
+
+      // return getFavorite.filter((item: string) => item !== id);
+    }
+  };
+
+  const handleFavorite = (id: string): void => {
     dispatch(setFavorite(id));
+    helper(id);
   }
+
+  console.log(helper(getFavorite));
 
 
   const highSrc = art.headerImage.url;
@@ -87,6 +98,7 @@ export const ArtCollectionsItem: React.FC<PropsArt> = ({ art }) => {
               className={isAddFavorite ? 'btn-favorite active-favorite' : 'btn-favorite'}
               onClick={() => {
                 handleFavorite(art.objectNumber);
+                helper(art.objectNumber);
                 setAddFavorite(!isAddFavorite);
               }}
             >
