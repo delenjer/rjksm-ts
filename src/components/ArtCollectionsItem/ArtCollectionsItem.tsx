@@ -70,7 +70,11 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
             </Link>
           </article>
         ) : (
-          <img src="./img/unnamed.png" alt="Loading Image"/>
+          <img
+            className="lazy-img"
+            src="./img/unnamed.png"
+            alt="Loading Image"
+          />
         )
       }
     </>

@@ -34,6 +34,7 @@ export interface IArtCollections {
     productionPlaces: any,
   }];
   facets: [{
+    name: string,
     facets: [{
       key: string,
       value: number,

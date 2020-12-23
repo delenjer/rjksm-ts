@@ -13,8 +13,8 @@ export const ArtCollectionsList: React.FC<PropsArtCollections> = ({ artCollectio
   return (
     <section className="collection">
       {
-        artObjects && artObjects.length < 0 ? (
-          <p>No search person!!!</p>
+        artObjects && !artObjects.length ? (
+          <p className="error-message">No search information, reload the page!!!</p>
         ) : (
           <div className="collection__list">
             {

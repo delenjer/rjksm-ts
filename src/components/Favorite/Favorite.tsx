@@ -20,6 +20,7 @@ export const Favorite = () => {
     dispatch(setFavorite([...getFavorite.filter((item: any) => item !== id)]));
   }
 
+  console.log(getFavorite);
 
   return (
     <section className="favorite">
