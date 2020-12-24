@@ -2,16 +2,22 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import { Link } from 'react-router-dom';
-import { IArt, IState } from "../../interface/interface";
+import { IArt, IState, IArtObjects } from "../../interface/interface";
 import { setFavorite } from "../../store/favoriteReducer/actions";
+
+//@ts-ignore
+import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
 import * as selectors from "../../store/store";
 
 export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const [isLoading, setLoading] = useState(false);
   const highSrc = art.headerImage.url;
-
   const getFavorite = useSelector((state:IState) => selectors.getFavorite(state));
+  const getFavoriteList = useSelector((state:IState) => selectors.getFavoriteList(state));
+  const artCollections = useSelector((state:IState) => selectors.getArtCollections(state));
   const dispatch = useDispatch();
+
+  const { artObjects } = artCollections;
 
   useEffect(() => {
     loadHighRes(highSrc);
@@ -39,6 +45,20 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
       // @ts-ignore
       dispatch(setFavorite([...getFavorite.filter((item: any) => item !== id)]));
     }
+
+    const title = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
+      .map(item => item.title);
+
+    const url = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
+      .map(item => item.webImage.url);
+
+    const favoriteItem = {
+      id,
+      title,
+      url,
+    };
+
+    dispatch(setFavoriteItem([...getFavoriteList, favoriteItem]));
   }
 
   return (

@@ -65,9 +65,10 @@ export interface IState {
   isLoading: boolean;
   info: [];
   id: string;
-  isFavoriteContent: {
-    imgUrl: [],
-    title: [],
+  isFavoriteList: {
+    id: ''
+    url: '',
+    title: '',
   }
 }
 
@@ -90,7 +91,15 @@ export interface IActionInfo {
 export interface IFavorite {
   type: string;
   id: string;
-  data: boolean,
+  data: boolean;
+  title: [];
+  url: [];
+  favoriteItems: [{
+    id: string,
+    title: string,
+    url: string,
+  }];
+  todo: any;
 }
 
 export interface IDetail {
@@ -128,4 +137,39 @@ export interface IArt {
     },
     productionPlaces: any,
   },
-};
+}
+
+export interface IFavoriteItem {
+  id: string,
+  title: string,
+  url: string,
+}
+
+export interface IArtObjects {
+  links: any,
+  id: string,
+  objectNumber: string,
+  title: string,
+  hasImage: boolean,
+  principalOrFirstMaker: string,
+  longTitle: string,
+  showImage: boolean,
+  permitDownload: boolean,
+  webImage: {
+    guid: string,
+    offsetPercentageX: number,
+    offsetPercentageY: number,
+    width: number,
+    height: number,
+    url: string,
+  },
+  headerImage: {
+    guid: string,
+    offsetPercentageX: number,
+    offsetPercentageY: number,
+    width: number,
+    height: number,
+    url: string,
+  },
+  productionPlaces: any,
+}

@@ -9,9 +9,6 @@ import { setSearch } from '../../store/loadingArtItemsReducer/actions';
 export const Header = () => {
   const [isQuery, setQuery] = useState('');
   const getFavorite = useSelector((state:IState) => selectors.getFavorite(state));
-
-  //@ts-ignore
-  const loadingArtItems = useSelector((state:IState) => selectors.getLoadingArtItems(state));
   const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
