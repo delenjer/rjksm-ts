@@ -39,8 +39,8 @@ export const Favorite = () => {
       {
         getFavoriteList.filter((item: any)=> getFavorite.includes(item.id))
           .map((item: any) => (
-          <ul className="favorite__list" key={item.id}>
-            <li className="favorite__item">
+           <ul className="favorite__list" key={item.id}>
+              <li className="favorite__item">
               <div className="favorite__header">
                 <h2 className="favorite__title">{item.title}</h2>
               </div>
@@ -53,7 +53,7 @@ export const Favorite = () => {
                 />
               </div>
             </li>
-          </ul>
+           </ul>
         ))
       }
     </section>
