@@ -26,16 +26,19 @@ export const Header = () => {
         <form
           action="#"
           onSubmit={(e) => handleSubmit(e)}
+          className="form"
         >
           <input
             type="text"
             placeholder="Search keyword..."
             value={isQuery}
             onChange={(e) => setQuery(e.target.value)}
+            className="form__input"
           />
 
           <button
             type="submit"
+            className="form__button"
           >
             Search
           </button>

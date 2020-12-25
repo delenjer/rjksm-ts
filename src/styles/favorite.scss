@@ -1,6 +1,6 @@
 .favorite {
   background-color: #000;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 
   &__back {
     display: block;
@@ -12,13 +12,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0.5rem;
     margin-bottom: 1rem;
   }
 
   &__title {
-    color: #fff;
+    font-size: 2rem;
     font-weight: bold;
+    color: #fff;
   }
 
   &__btn {
@@ -35,6 +35,7 @@
   }
 
   &__img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;

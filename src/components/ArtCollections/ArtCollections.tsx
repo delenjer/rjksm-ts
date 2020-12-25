@@ -34,7 +34,9 @@ export const ArtCollections: React.FC = () => {
             <ArtCollectionsList artCollections={artCollections} />
           </main>
         ) : (
-          <div className="loader">Loading...</div>
+          <div className="loader-box">
+            <div className="loader">Loading...</div>
+          </div>
         )
       }
 

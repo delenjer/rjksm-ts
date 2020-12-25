@@ -20,7 +20,9 @@ export const Favorite = () => {
 
   useEffect(() => {
     dispatch(
-      setFavoriteItem([...getFavoriteList.filter((item: any) => getFavorite.includes(item.id))
+      setFavoriteItem(
+        [...getFavoriteList.filter((item: any) => getFavorite
+          .includes(item.id))
       ])
     );
   }, []);
@@ -54,7 +56,7 @@ export const Favorite = () => {
 
               <div className="favorite__container">
                 <img
-                  className="favorite__container"
+                  className="favorite__img"
                   src={`${item.url}`}
                   alt={`${item.title}`}
                 />

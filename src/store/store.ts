@@ -15,7 +15,6 @@ import favoriteListReducer, * as selectorsFavoriteList from './favoriteListReduc
 export const getFavoriteList = (state: IState) => selectorsFavoriteList
   .getFavoriteList(state.isFavoriteList);
 
-
 export const getFavorite = (state: IState) => selectorsFavorite.getFavorite(state.isFavorite);
 
 export const getInfo = (state: IState) => selectorsInfo
