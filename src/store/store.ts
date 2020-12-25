@@ -10,9 +10,9 @@ import btnListReducer, *as selectorsBtnList from './btnListReducer/index';
 import loadReducer, *as selectorsIsLoading from './loadReducer/index';
 import infoReducer, * as selectorsInfo from './infoReducer/index';
 import favoriteReducer, * as selectorsFavorite from './favoriteReducer/index';
-import favoriteListReducer, * as selectorsfavoriteList from './favoriteListReducer/index';
+import favoriteListReducer, * as selectorsFavoriteList from './favoriteListReducer/index';
 
-export const getFavoriteList = (state: IState) => selectorsfavoriteList
+export const getFavoriteList = (state: IState) => selectorsFavoriteList
   .getFavoriteList(state.isFavoriteList);
 
 

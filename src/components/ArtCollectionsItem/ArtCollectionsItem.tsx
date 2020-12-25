@@ -36,14 +36,12 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
 
-    const hasLike = getFavorite.findIndex((item: any) => item === id);
+    const hasLike = getFavorite.findIndex((item: string) => item === id);
 
     if (hasLike === -1) {
-      // @ts-ignore
       dispatch(setFavorite([...getFavorite, id]));
     } else {
-      // @ts-ignore
-      dispatch(setFavorite([...getFavorite.filter((item: any) => item !== id)]));
+      dispatch(setFavorite([...getFavorite.filter((item: string) => item !== id)]));
     }
 
     const title = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
@@ -52,13 +50,13 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
     const url = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
       .map(item => item.webImage.url);
 
-    const favoriteItem = {
+    const addNewFavorite = {
       id,
       title,
       url,
     };
 
-    dispatch(setFavoriteItem([...getFavoriteList, favoriteItem]));
+    dispatch(setFavoriteItem([...getFavoriteList, addNewFavorite]));
   }
 
   return (

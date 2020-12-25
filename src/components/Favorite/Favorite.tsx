@@ -12,7 +12,6 @@ export const Favorite = () => {
   const getFavoriteList = useSelector((state:IState) => selectors.getFavoriteList(state));
   const dispatch = useDispatch();
 
-  //@ts-ignore
   const handleDeleteFavorite = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: string) => {
     e.preventDefault();
 
@@ -21,9 +20,8 @@ export const Favorite = () => {
 
   useEffect(() => {
     dispatch(
-      setFavoriteItem(
-        [...getFavoriteList.filter((item: any) => getFavorite.includes(item.id))
-        ])
+      setFavoriteItem([...getFavoriteList.filter((item: any) => getFavorite.includes(item.id))
+      ])
     );
   }, []);
 
@@ -43,6 +41,15 @@ export const Favorite = () => {
               <li className="favorite__item">
               <div className="favorite__header">
                 <h2 className="favorite__title">{item.title}</h2>
+
+                <button
+                  className="favorite__btn"
+                  type="button"
+                  onClick={(e) =>
+                    handleDeleteFavorite(e, item.id)}
+                >
+                  <span className="icon-cross" />
+                </button>
               </div>
 
               <div className="favorite__container">

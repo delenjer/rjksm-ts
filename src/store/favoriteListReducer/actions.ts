@@ -1,8 +1,8 @@
-import { IFavoriteItem } from '../../interface/interface';
+import { IFavoriteList } from '../../interface/interface';
 
 export const SET_FAVORITE_CONTENT = 'SET_FAVORITE_CONTENT';
 
-export const setFavoriteItem = (favoriteItems: IFavoriteItem[]) => ({
+export const setFavoriteItem = (addNewFavorite: (IFavoriteList[])) => ({
   type: SET_FAVORITE_CONTENT,
-  favoriteItems,
+  addNewFavorite,
 });

@@ -65,11 +65,7 @@ export interface IState {
   isLoading: boolean;
   info: [];
   id: string;
-  isFavoriteList: {
-    id: ''
-    url: '',
-    title: '',
-  }
+  isFavoriteList: [];
 }
 
 export interface IActionSetCurrentPage {
@@ -94,7 +90,7 @@ export interface IFavorite {
   data: boolean;
   title: [];
   url: [];
-  favoriteItems: [{
+  addNewFavorite: [{
     id: string,
     title: string,
     url: string,
@@ -139,10 +135,10 @@ export interface IArt {
   },
 }
 
-export interface IFavoriteItem {
+export interface IFavoriteList {
   id: string,
-  title: string,
-  url: string,
+  title: string[],
+  url: string[],
 }
 
 export interface IArtObjects {
