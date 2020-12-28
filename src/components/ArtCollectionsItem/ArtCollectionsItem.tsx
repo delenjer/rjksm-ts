@@ -4,8 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import { Link } from 'react-router-dom';
 import { IArt, IState, IArtObjects } from "../../interface/interface";
 import { setFavorite } from "../../store/favoriteReducer/actions";
-
-//@ts-ignore
 import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
 import * as selectors from "../../store/store";
 
@@ -16,21 +14,21 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const getFavoriteList = useSelector((state:IState) => selectors.getFavoriteList(state));
   const artCollections = useSelector((state:IState) => selectors.getArtCollections(state));
   const dispatch = useDispatch();
-
   const { artObjects } = artCollections;
+  const modalWrap = document.querySelector('.modal-wrapper') as HTMLElement;
 
   useEffect(() => {
     loadHighRes(highSrc);
   }, [highSrc]);
 
   const loadHighRes = (imageSrc: string) => {
-    const image = new Image();
+    const lazyImage = new Image();
 
-    image.onload = () => {
+    lazyImage.onload = () => {
       setLoading(true);
     };
 
-    image.src = imageSrc;
+    lazyImage.src = imageSrc;
   };
 
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
@@ -59,6 +57,10 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
     dispatch(setFavoriteItem([...getFavoriteList, addNewFavorite]));
   }
 
+  const handleClickModal = () => {
+    modalWrap.classList.add('show-modal-wrap');
+  }
+
   return (
     <>
       {
@@ -83,6 +85,7 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
               to={`/${art.objectNumber}/modal`}
               className="collection__link"
               style={{ backgroundImage: `url(${highSrc})` }}
+              onClick={handleClickModal}
             >
               <p className="collection__text">{art.longTitle}</p>
             </Link>
@@ -91,7 +94,7 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
           <img
             className="lazy-img"
             src="./img/unnamed.png"
-            alt="Loading Image"
+            alt="Loading unnamed"
           />
         )
       }
