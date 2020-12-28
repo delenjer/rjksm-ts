@@ -37,9 +37,9 @@ export const ModalWindow = () => {
         >
           {
             isError ? (
-              <>
+              <div className="error-wrapper">
                 <p className="error-message">
-                  Error from server
+                  Error from server!!!
                 </p>
 
                 <button
@@ -54,7 +54,7 @@ export const ModalWindow = () => {
                 >
                   Close
                 </button>
-              </>
+              </div>
             ) : (
               artObject && (
                 <section className="modal">

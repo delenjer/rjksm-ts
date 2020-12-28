@@ -23,7 +23,7 @@
   width: 100%;
   max-width: 1000px;
   min-height: 600px;
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem;
   background-color: #fff;
   border-radius: 20px;
   z-index: 100;
@@ -36,7 +36,7 @@
   justify-content: space-between;
   align-content: space-between;
   height: 600px;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
   overflow-y: auto;
 
   &__info-col {
