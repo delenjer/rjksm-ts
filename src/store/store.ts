@@ -11,6 +11,14 @@ import loadReducer, *as selectorsIsLoading from './loadReducer/index';
 import infoReducer, * as selectorsInfo from './infoReducer/index';
 import favoriteReducer, * as selectorsFavorite from './favoriteReducer/index';
 import favoriteListReducer, * as selectorsFavoriteList from './favoriteListReducer/index';
+import modalWindowReducer, * as selectorsActiveModal from './modalWindowReduser/index';
+import errorMessageReducer, * as selectorsError from './errorMessageReducer/index';
+
+export const getError = (state: IState) => selectorsError
+  .getError(state.isError);
+
+export const getActiveModal = (state: IState) => selectorsActiveModal
+  .getActiveModal(state.isActiveModal);
 
 export const getFavoriteList = (state: IState) => selectorsFavoriteList
   .getFavoriteList(state.isFavoriteList);
@@ -49,6 +57,8 @@ const rootReducer = combineReducers({
   info: infoReducer,
   isFavorite: favoriteReducer,
   isFavoriteList: favoriteListReducer,
+  isActiveModal: modalWindowReducer,
+  isError: errorMessageReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools(

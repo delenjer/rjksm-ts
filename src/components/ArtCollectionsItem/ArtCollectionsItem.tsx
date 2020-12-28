@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { IArt, IState, IArtObjects } from "../../interface/interface";
 import { setFavorite } from "../../store/favoriteReducer/actions";
 import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
+import { setActionModal } from "../../store/modalWindowReduser/actions";
 import * as selectors from "../../store/store";
 
 export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
@@ -15,7 +16,6 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const artCollections = useSelector((state:IState) => selectors.getArtCollections(state));
   const dispatch = useDispatch();
   const { artObjects } = artCollections;
-  const modalWrap = document.querySelector('.modal-wrapper') as HTMLElement;
 
   useEffect(() => {
     loadHighRes(highSrc);
@@ -58,7 +58,7 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   }
 
   const handleClickModal = () => {
-    modalWrap.classList.add('show-modal-wrap');
+    dispatch(setActionModal(true));
   }
 
   return (

@@ -55,6 +55,8 @@ export interface ILoadingArtItems {
 }
 
 export interface IState {
+  isError: boolean;
+  isActiveModal: boolean;
   isFavorite: [];
   artCollections: IArtCollections;
   loadingArtItems: ILoadingArtItems;
@@ -77,6 +79,16 @@ export interface IActionSetCurrentPage {
 export interface IActionIsLoading {
   type: string;
   isLoading: boolean;
+}
+
+export interface IErrorMessage {
+  type: string;
+  isError: boolean;
+}
+
+export interface IActionModal {
+  type: string;
+  isAction: boolean;
 }
 
 export interface IActionInfo {
