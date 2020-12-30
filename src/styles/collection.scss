@@ -6,7 +6,7 @@
     //grid-template-rows: 30vh 40vh 30vh 40vh;
     //grid-template-areas: "a a a" "b b b" "c c c" "d d d";
     grid-gap: 30px;
-    align-items: self-start;
+    align-items: center;
     padding-bottom: 47px;
   }
 
@@ -21,12 +21,17 @@
     font-size: 1rem;
     transition: all 0.3s;
     transform: scale(0, 0);
+    border-radius: 0 0 7px 7px;
   }
 
   &__item {
     position: relative;
     height: 100%;
     min-height: 30vh;
+
+    &:nth-child(2n) {
+      min-height: 40vh;
+    }
 
     &:hover {
       .collection__text {
@@ -48,6 +53,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 7px;
     z-index: 2;
   }
 }
