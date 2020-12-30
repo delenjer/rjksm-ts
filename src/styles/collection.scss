@@ -2,9 +2,6 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    //grid-template-columns: repeat(4, 23.7%);
-    //grid-template-rows: 30vh 40vh 30vh 40vh;
-    //grid-template-areas: "a a a" "b b b" "c c c" "d d d";
     grid-gap: 30px;
     align-items: center;
     padding-bottom: 47px;
