@@ -17,8 +17,6 @@ export const ArtCollections: React.FC = () => {
   const pagesCount = Math.ceil(totalPicturesCount / pageSize);
   const dispatch = useDispatch();
 
-  console.log(selectValue);
-
   const handlePageClick = (page:{selected: number}): void => {
     dispatch(setCurrentPage(page.selected + 1));
   };
