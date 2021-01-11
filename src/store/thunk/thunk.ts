@@ -4,10 +4,10 @@ import { setLoading } from '../loadReducer/actions';
 import { setInfo } from '../infoReducer/actions';
 import { setError } from '../errorMessageReducer/actions';
 
-export const loadingArtCollections = (currentPage: number, pageSize: number, query: string) => {
+export const loadingArtCollections = (currentPage: number, pageSize: number, query: string, selectValue: string) => {
   return (dispatch: (arg: { type: string }) => void) => {
     dispatch(setLoading(true));
-    getArtCollections(currentPage, pageSize, query)
+    getArtCollections(currentPage, pageSize, query, selectValue)
       .then(async data => {
         dispatch(await setArtCollections(data));
         dispatch(setLoading(false));

@@ -13,17 +13,19 @@ export const ArtCollections: React.FC = () => {
   const artCollections = useSelector((state:IState) => selectors.getArtCollections(state));
   const loadingArtItems = useSelector((state:IState) => selectors.getLoadingArtItems(state));
   const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
-  const { currentPage, pageSize, totalPicturesCount, query } = loadingArtItems;
+  const { currentPage, pageSize, totalPicturesCount, query, selectValue } = loadingArtItems;
   const pagesCount = Math.ceil(totalPicturesCount / pageSize);
   const dispatch = useDispatch();
+
+  console.log(selectValue);
 
   const handlePageClick = (page:{selected: number}): void => {
     dispatch(setCurrentPage(page.selected + 1));
   };
 
   useEffect(() => {
-    dispatch(loadingArtCollections(currentPage, pageSize, query));
-  }, [currentPage, pageSize, query, dispatch]);
+    dispatch(loadingArtCollections(currentPage, pageSize, query, selectValue));
+  }, [currentPage, pageSize, query, selectValue, dispatch]);
 
   return (
     <>

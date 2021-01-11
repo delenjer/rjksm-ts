@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { IState } from "../../interface/interface";
 import * as selectors from "../../store/store";
-import { setSearch } from '../../store/loadingArtItemsReducer/actions';
+import { setSearch, setSelectValue } from '../../store/loadingArtItemsReducer/actions';
+import { ResultSearchOrSort } from '../ResultSearchOrSort/ResultSearchOrSort';
 
 export const Header = () => {
   const [isQuery, setQuery] = useState('');
@@ -18,31 +19,21 @@ export const Header = () => {
     setQuery('');
   };
 
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setSelectValue(e.target.value));
+  }
+
   return (
     <header className="header">
       <div className="header__wrap">
         <Link to="/" className="header__logo">Rijksmuseum</Link>
 
-        <form
-          action="#"
-          onSubmit={(e) => handleSubmit(e)}
-          className="form"
-        >
-          <input
-            type="text"
-            placeholder="Search keyword..."
-            value={isQuery}
-            onChange={(e) => setQuery(e.target.value)}
-            className="form__input"
-          />
-
-          <button
-            type="submit"
-            className="form__button"
-          >
-            Search
-          </button>
-        </form>
+        <ResultSearchOrSort
+          handleSubmit={handleSubmit}
+          handleSelect={handleSelect}
+          setQuery={setQuery}
+          isQuery={isQuery}
+        />
 
         <Link to="/favorite" className="header__link">
           <span className="header__link--count">

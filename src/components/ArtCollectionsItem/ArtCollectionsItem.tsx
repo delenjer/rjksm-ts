@@ -6,10 +6,11 @@ import { IArt, IState, IArtObjects } from "../../interface/interface";
 import { setFavorite } from "../../store/favoriteReducer/actions";
 import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
 import { setActionModal } from "../../store/modalWindowReduser/actions";
+import { LazyLoadingImg } from "../LazyLoadingImg/LazyLoadingImg";
 import * as selectors from "../../store/store";
 
 export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoadingImg, setLoadingImg] = useState(false);
   const highSrc = art.headerImage.url;
   const getFavorite = useSelector((state:IState) => selectors.getFavorite(state));
   const getFavoriteList = useSelector((state:IState) => selectors.getFavoriteList(state));
@@ -18,14 +19,14 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const { artObjects } = artCollections;
 
   useEffect(() => {
-    loadHighRes(highSrc);
+    loadHighSrc(highSrc);
   }, [highSrc]);
 
-  const loadHighRes = (imageSrc: string) => {
+  const loadHighSrc = (imageSrc: string) => {
     const lazyImage = new Image();
 
     lazyImage.onload = () => {
-      setLoading(true);
+      setLoadingImg(true);
     };
 
     lazyImage.src = imageSrc;
@@ -64,7 +65,7 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   return (
     <>
       {
-        isLoading ? (
+        isLoadingImg ? (
           <article className="collection__item">
             <button
               className="favorite-btn"
@@ -91,11 +92,7 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
             </Link>
           </article>
         ) : (
-          <img
-            className="lazy-img"
-            src="./img/unnamed.png"
-            alt="Loading unnamed"
-          />
+          <LazyLoadingImg />
         )
       }
     </>

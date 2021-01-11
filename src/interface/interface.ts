@@ -52,6 +52,7 @@ export interface ILoadingArtItems {
   totalPicturesCount: number;
   currentPage: number;
   query: string;
+  selectValue: string;
 }
 
 export interface IState {
@@ -71,6 +72,7 @@ export interface IState {
 }
 
 export interface IActionSetCurrentPage {
+  value: string;
   type: string;
   num: number;
   title: string;

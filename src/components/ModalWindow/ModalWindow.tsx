@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { IState } from '../../interface/interface';
 import * as selectors from '../../store/store';
 import { loadInfo } from '../../store/thunk/thunk';
