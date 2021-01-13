@@ -1,5 +1,5 @@
 import { IActionModal } from '../../interface/interface';
-import {SET_ACTION} from './actions';
+import { SET_ACTION } from './actions';
 
 export const getActiveModal = (state: boolean) => state;
 

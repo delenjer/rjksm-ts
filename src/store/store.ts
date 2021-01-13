@@ -9,6 +9,7 @@ import loadingArtItemsReducer, *as selectorsLoadingArtItems from './loadingArtIt
 import btnListReducer, *as selectorsBtnList from './btnListReducer/index';
 import loadReducer, *as selectorsIsLoading from './loadReducer/index';
 import infoReducer, * as selectorsInfo from './infoReducer/index';
+import infoIdReducer, * as selectorsInfoId from './infoIdReducer/index';
 import favoriteReducer, * as selectorsFavorite from './favoriteReducer/index';
 import favoriteListReducer, * as selectorsFavoriteList from './favoriteListReducer/index';
 import modalWindowReducer, * as selectorsActiveModal from './modalWindowReduser/index';
@@ -25,8 +26,11 @@ export const getFavoriteList = (state: IState) => selectorsFavoriteList
 
 export const getFavorite = (state: IState) => selectorsFavorite.getFavorite(state.isFavorite);
 
-export const getInfo = (state: IState) => selectorsInfo
+export const getInfo = (state: any) => selectorsInfo
   .getInfo(state.info);
+
+export const getInfoId = (state: any) => selectorsInfoId
+  .getInfoId(state.infoId);
 
 export const getIsLoading = (state: IState) => selectorsIsLoading
   .getIsLoading(state.isLoading);
@@ -55,6 +59,7 @@ const rootReducer = combineReducers({
   btnList: btnListReducer,
   isLoading: loadReducer,
   info: infoReducer,
+  infoId: infoIdReducer,
   isFavorite: favoriteReducer,
   isFavoriteList: favoriteListReducer,
   isActiveModal: modalWindowReducer,

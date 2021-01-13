@@ -15,9 +15,9 @@ export const loadingArtCollections = (currentPage: number, pageSize: number, que
   }
 };
 
-export const loadInfo = (id: string) => (dispatch: (arg: { type: string }) => void) => {
+export const loadInfo = (infoId: string) => (dispatch: (arg: { type: string }) => void) => {
   dispatch(setLoading(true));
-  getInfo(id).then(async (data) => {
+  getInfo(infoId).then(async (data) => {
     dispatch(await setInfo(data));
     dispatch(setLoading(false));
   }).catch(() => {

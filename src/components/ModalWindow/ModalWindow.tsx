@@ -1,27 +1,36 @@
 import React, { useEffect } from 'react';
+//@ts-ignore
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { IState } from '../../interface/interface';
 import * as selectors from '../../store/store';
 import { loadInfo } from '../../store/thunk/thunk';
-import { Home } from "../Home/Home";
+// import { Home } from "../Home/Home";
 import {setActionModal} from "../../store/modalWindowReduser/actions";
 import { setError } from "../../store/errorMessageReducer/actions";
 
 export const ModalWindow = () => {
+  //@ts-ignore
   const info = useSelector((state:IState) => selectors.getInfo(state));
+
+  const infoId = useSelector((state:IState) => selectors.getInfoId(state));
   const isActiveModal = useSelector((state:IState) => selectors.getActiveModal(state));
+  //@ts-ignore
   const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
   const isError = useSelector((state:IState) => selectors.getError(state));
   const dispatch = useDispatch();
+  //@ts-ignore
   const { id } = useParams();
   const history = useHistory();
+
   const { artObject } = info;
 
+  console.log(info);
+
   useEffect(() => {
-    dispatch(loadInfo(id));
-  }, [id, dispatch]);
+    dispatch(loadInfo(infoId));
+  }, [infoId]);
 
   const handleClickCloseModal = () => {
     dispatch(setActionModal(false));
@@ -30,7 +39,7 @@ export const ModalWindow = () => {
 
   return (
     <>
-      <Home />
+      {/*<Home />*/}
 
       <div className={isActiveModal ? 'modal-wrapper active-modal-wrap' : 'modal-wrapper'}>
         <div

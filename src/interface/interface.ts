@@ -66,7 +66,7 @@ export interface IState {
     btnText: number,
   };
   isLoading: boolean;
-  info: [];
+  info: string;
   id: string;
   isFavoriteList: [];
 }
@@ -93,8 +93,9 @@ export interface IActionModal {
   isAction: boolean;
 }
 
-export interface IActionInfo {
+export interface IInfo {
   type: string;
+  data: any;
   id: string;
 }
 
