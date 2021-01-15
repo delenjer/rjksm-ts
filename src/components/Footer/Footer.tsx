@@ -14,8 +14,8 @@ export const Footer: React.FC = () => {
   const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
   const loadingArtItems = useSelector((state:IState) => selectors.getLoadingArtItems(state));
   const { currentPage, pageSize, totalPicturesCount, query, selectValue } = loadingArtItems;
-  const pagesCount = Math.ceil(totalPicturesCount / pageSize);
   const dispatch = useDispatch();
+  const pagesCount = Math.ceil(totalPicturesCount / pageSize);
 
   const handlePageClick = (page:{selected: number}): void => {
     dispatch(setCurrentPage(page.selected + 1));
@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
 
   useEffect(() => {
     dispatch(loadingArtCollections(currentPage, pageSize, query, selectValue));
-  }, [currentPage, pageSize, query, selectValue]);
+  }, [currentPage, pageSize, query, selectValue, totalPicturesCount]);
 
   useEffect(() => {
     dispatch(setButtonList(document.querySelectorAll('.load-items__btn')));

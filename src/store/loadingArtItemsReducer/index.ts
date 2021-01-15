@@ -1,9 +1,15 @@
 import { IActionSetCurrentPage, ILoadingArtItems } from '../../interface/interface';
-import { SET_CURRENT_PAGE, SET_LOAD_ITEM, SET_KEY_WORD, SET_SELECT_VALUE } from './actions';
+import {
+  SET_CURRENT_PAGE,
+  SET_TOTAL_COUNT,
+  SET_LOAD_ITEM,
+  SET_KEY_WORD,
+  SET_SELECT_VALUE
+} from './actions';
 
 const initialState = {
   pageSize: 10,
-  totalPicturesCount: 10000,
+  totalPicturesCount: null,
   currentPage: 1,
   query: '',
   selectValue: '',
@@ -17,6 +23,13 @@ const loadingArtItemsReducer = (state = initialState, action:IActionSetCurrentPa
       return {
         ...state,
         currentPage: action.num,
+      };
+
+    case SET_TOTAL_COUNT:
+      console.log(action.num);
+      return {
+        ...state,
+        totalPicturesCount: action.num,
       };
 
     case SET_LOAD_ITEM:
