@@ -4,7 +4,7 @@ type PropsResultSearchOrSort = {
   handleSubmit(e: React.FormEvent<HTMLFormElement>): void;
   handleSelect(e: React.ChangeEvent<HTMLSelectElement>): void;
   setQuery(e: string): void;
-  isQuery: string,
+  isQuery: string;
 }
 
 export const ResultSearchOrSort: React.FC<PropsResultSearchOrSort> = (

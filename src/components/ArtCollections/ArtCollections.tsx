@@ -16,7 +16,6 @@ export const ArtCollections = () => {
     const totalCount = artCollections.count > maxGetElementsFromServer ? maxGetElementsFromServer : artCollections.count;
 
     dispatch(setTotalCount(totalCount));
-
   }, [artCollections]);
 
   return (

@@ -9,6 +9,7 @@ import { setActionModal } from "../../store/modalWindowReduser/actions";
 import { LazyLoadingImg } from "../LazyLoadingImg/LazyLoadingImg";
 import * as selectors from "../../store/store";
 import { loadInfo } from '../../store/thunk/thunk';
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
 export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const [isLoadingImg, setLoadingImg] = useState(false);
@@ -71,20 +72,11 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
       {
         isLoadingImg ? (
           <article className="collection__item">
-            <button
-              className="favorite-btn"
-              onClick={(e) =>
-                handleFavoriteClick(e, art.objectNumber)
-              }
-            >
-              {
-                getFavorite.includes(art.objectNumber) ? (
-                  <span className="icon-heart active-favorite" />
-                ) : (
-                  <span className="icon-heart" />
-                )
-              }
-            </button>
+            <FavoriteButton
+              handleFavoriteClick={handleFavoriteClick}
+              getFavorite={getFavorite}
+              art={art}
+            />
 
             <Link
               to="/"
