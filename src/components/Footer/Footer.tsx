@@ -10,6 +10,7 @@ import { setCurrentPage, setLoadItemsOnPage } from '../../store/loadingArtItemsR
 import { loadingArtCollections } from "../../store/thunk/thunk";
 
 export const Footer: React.FC = () => {
+  useSelector((state:IState) => selectors.getBtnList(state));
   const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
   const loadingArtItems = useSelector((state:IState) => selectors.getLoadingArtItems(state));
   const { currentPage, pageSize, totalPicturesCount, query, selectValue } = loadingArtItems;
@@ -30,8 +31,6 @@ export const Footer: React.FC = () => {
 
   const handleLoadItem = (e:React.MouseEvent<HTMLButtonElement>) => {
     const { innerHTML } = e.target as HTMLButtonElement;
-
-    console.log(e.target);
 
     dispatch(setLoadItemsOnPage(+innerHTML));
   };
