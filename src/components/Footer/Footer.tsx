@@ -31,6 +31,8 @@ export const Footer: React.FC = () => {
   const handleLoadItem = (e:React.MouseEvent<HTMLButtonElement>) => {
     const { innerHTML } = e.target as HTMLButtonElement;
 
+    console.log(e.target);
+
     dispatch(setLoadItemsOnPage(+innerHTML));
   };
 
