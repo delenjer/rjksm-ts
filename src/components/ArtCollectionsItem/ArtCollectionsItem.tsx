@@ -8,7 +8,6 @@ import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
 import { setActionModal } from "../../store/modalWindowReduser/actions";
 import { LazyLoadingImg } from "../LazyLoadingImg/LazyLoadingImg";
 import * as selectors from "../../store/store";
-//@ts-ignore
 import { loadInfo } from '../../store/thunk/thunk';
 
 export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
@@ -59,12 +58,11 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
 
     dispatch(setFavoriteItem([...getFavoriteList, addNewFavorite]));
   }
-  //@ts-ignore
+
   const handleClickModal = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
 
     dispatch(setActionModal(true));
-
     dispatch(loadInfo(id));
   }
 
