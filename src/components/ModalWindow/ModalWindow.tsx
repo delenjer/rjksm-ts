@@ -1,36 +1,22 @@
-import React, { useEffect } from 'react';
-//@ts-ignore
-import { Link, useParams, useHistory } from 'react-router-dom';
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { IState } from '../../interface/interface';
 import * as selectors from '../../store/store';
-import { loadInfo } from '../../store/thunk/thunk';
-// import { Home } from "../Home/Home";
 import {setActionModal} from "../../store/modalWindowReduser/actions";
 import { setError } from "../../store/errorMessageReducer/actions";
 
 export const ModalWindow = () => {
-  //@ts-ignore
   const info = useSelector((state:IState) => selectors.getInfo(state));
-
-  const infoId = useSelector((state:IState) => selectors.getInfoId(state));
+  //@ts-ignore
   const isActiveModal = useSelector((state:IState) => selectors.getActiveModal(state));
   //@ts-ignore
   const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
   const isError = useSelector((state:IState) => selectors.getError(state));
   const dispatch = useDispatch();
-  //@ts-ignore
-  const { id } = useParams();
   const history = useHistory();
-
   const { artObject } = info;
-
-  console.log(info);
-
-  useEffect(() => {
-    dispatch(loadInfo(infoId));
-  }, [infoId]);
 
   const handleClickCloseModal = () => {
     dispatch(setActionModal(false));
@@ -39,8 +25,6 @@ export const ModalWindow = () => {
 
   return (
     <>
-      {/*<Home />*/}
-
       <div className={isActiveModal ? 'modal-wrapper active-modal-wrap' : 'modal-wrapper'}>
         <div
           className="modal-window"
@@ -54,12 +38,7 @@ export const ModalWindow = () => {
 
                 <button
                   type="button"
-                  onClick={
-                    () => {
-                      history.goBack();
-                      handleClickCloseModal();
-                    }
-                  }
+                  onClick={handleClickCloseModal}
                   className="modal__btn"
                 >
                   Close

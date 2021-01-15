@@ -6,18 +6,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../interface/interface';
 import *as selectors from '../../store/store';
 import { setButtonList, setButtonText } from '../../store/btnListReducer/actions';
-import { setLoadItemsOnPage } from '../../store/loadingArtItemsReducer/actions';
+import { setCurrentPage, setLoadItemsOnPage } from '../../store/loadingArtItemsReducer/actions';
+import { loadingArtCollections } from "../../store/thunk/thunk";
 
-type PropsFooter = {
-  pagesCount: number;
-  currentPage: number;
-  isLoading: boolean;
-  handlePageClick(page:{selected: number}): void;
-}
-
-export const Footer: React.FC<PropsFooter> = ({ pagesCount, currentPage, handlePageClick, isLoading }) => {
-  useSelector((state: IState) => selectors.getBtnList(state));
+export const Footer: React.FC = () => {
+  const isLoading = useSelector((state:IState) => selectors.getIsLoading(state));
+  const loadingArtItems = useSelector((state:IState) => selectors.getLoadingArtItems(state));
+  const { currentPage, pageSize, totalPicturesCount, query, selectValue } = loadingArtItems;
+  const pagesCount = Math.ceil(totalPicturesCount / pageSize);
   const dispatch = useDispatch();
+
+  const handlePageClick = (page:{selected: number}): void => {
+    dispatch(setCurrentPage(page.selected + 1));
+  };
+
+  useEffect(() => {
+    dispatch(loadingArtCollections(currentPage, pageSize, query, selectValue));
+  }, [currentPage, pageSize, query, selectValue]);
 
   useEffect(() => {
     dispatch(setButtonList(document.querySelectorAll('.load-items__btn')));

@@ -6,9 +6,10 @@ import { IArt, IState, IArtObjects } from "../../interface/interface";
 import { setFavorite } from "../../store/favoriteReducer/actions";
 import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
 import { setActionModal } from "../../store/modalWindowReduser/actions";
-import { setInfoId } from "../../store/infoIdReducer/actions";
 import { LazyLoadingImg } from "../LazyLoadingImg/LazyLoadingImg";
 import * as selectors from "../../store/store";
+//@ts-ignore
+import { loadInfo } from '../../store/thunk/thunk';
 
 export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const [isLoadingImg, setLoadingImg] = useState(false);
@@ -58,13 +59,13 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
 
     dispatch(setFavoriteItem([...getFavoriteList, addNewFavorite]));
   }
-
   //@ts-ignore
   const handleClickModal = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
 
     dispatch(setActionModal(true));
-    dispatch(setInfoId(id));
+
+    dispatch(loadInfo(id));
   }
 
   return (
@@ -88,7 +89,6 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
             </button>
 
             <Link
-              // to={`/${art.objectNumber}/modal`}
               to="/"
               className="collection__link"
               style={{ backgroundImage: `url(${highSrc})` }}
