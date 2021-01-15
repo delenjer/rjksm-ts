@@ -2,19 +2,24 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 
 import { setFavorite } from "../../store/favoriteReducer/actions";
-import { IArtObjects } from "../../interface/interface";
 import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
 
 type propsFavoriteButton = {
-  handleFavoriteClick(e: React.MouseEvent<HTMLButtonElement>, id: string): void;
   art: { objectNumber: string, };
   getFavorite: string[];
   getFavoriteList: [];
+  artObjects: [
+    {
+      webImage: {url: string};
+      objectNumber: string;
+      title: string }
+  ];
 }
 
-// @ts-ignore
 export const FavoriteButton: React.FC<propsFavoriteButton> = ({ art, getFavorite, artObjects, getFavoriteList }) => {
   const dispatch = useDispatch();
+
+  console.log(artObjects);
 
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
@@ -27,13 +32,11 @@ export const FavoriteButton: React.FC<propsFavoriteButton> = ({ art, getFavorite
       dispatch(setFavorite([...getFavorite.filter((item: string) => item !== id)]));
     }
 
-    const title = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
-      // @ts-ignore
-      .map(item => item.title);
+    const title = artObjects.filter((item) => item.objectNumber === id)
+      .map((item: { title: string; }) => item.title);
 
-    const url = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
-      // @ts-ignore
-      .map(item => item.webImage.url);
+    const url = artObjects.filter((item) => item.objectNumber === id)
+      .map((item) => item.webImage.url);
 
     const addNewFavorite = {
       id,
