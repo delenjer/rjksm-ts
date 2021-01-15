@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from 'react-router-dom';
-import { IArt, IState, IArtObjects } from "../../interface/interface";
-import { setFavorite } from "../../store/favoriteReducer/actions";
-import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
+import { IArt, IState } from "../../interface/interface";
 import { setActionModal } from "../../store/modalWindowReduser/actions";
 import { LazyLoadingImg } from "../LazyLoadingImg/LazyLoadingImg";
 import * as selectors from "../../store/store";
@@ -34,32 +32,6 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
     lazyImage.src = imageSrc;
   };
 
-  const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
-    e.preventDefault();
-
-    const hasLike = getFavorite.findIndex((item: string) => item === id);
-
-    if (hasLike === -1) {
-      dispatch(setFavorite([...getFavorite, id]));
-    } else {
-      dispatch(setFavorite([...getFavorite.filter((item: string) => item !== id)]));
-    }
-
-    const title = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
-      .map(item => item.title);
-
-    const url = artObjects.filter((item: IArtObjects) => item.objectNumber === id)
-      .map(item => item.webImage.url);
-
-    const addNewFavorite = {
-      id,
-      title,
-      url,
-    };
-
-    dispatch(setFavoriteItem([...getFavoriteList, addNewFavorite]));
-  }
-
   const handleClickModal = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
 
@@ -73,7 +45,9 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
         isLoadingImg ? (
           <article className="collection__item">
             <FavoriteButton
-              handleFavoriteClick={handleFavoriteClick}
+              artObjects={artObjects}
+              //@ts-ignore
+              getFavoriteList={getFavoriteList}
               getFavorite={getFavorite}
               art={art}
             />
