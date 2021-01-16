@@ -13,7 +13,6 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
   const [isLoadingImg, setLoadingImg] = useState(false);
   const highSrc = art.headerImage.url;
   const getFavorite = useSelector((state:IState) => selectors.getFavorite(state));
-  const getFavoriteList = useSelector((state:IState) => selectors.getFavoriteList(state));
   const artCollections = useSelector((state:IState) => selectors.getArtCollections(state));
   const dispatch = useDispatch();
   const { artObjects } = artCollections;
@@ -46,8 +45,6 @@ export const ArtCollectionsItem: React.FC<IArt> = ({ art }) => {
           <article className="collection__item">
             <FavoriteButton
               artObjects={artObjects}
-              //@ts-ignore
-              getFavoriteList={getFavoriteList}
               getFavorite={getFavorite}
               art={art}
             />

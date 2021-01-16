@@ -20,9 +20,8 @@ export const Favorite = () => {
 
   useEffect(() => {
     dispatch(
-      setFavoriteItem(
-        [...getFavoriteList.filter((item: any) => getFavorite
-          .includes(item.id))
+      setFavoriteItem([...getFavoriteList.filter((item: any) => getFavorite
+        .includes(item.id))
       ])
     );
   }, []);

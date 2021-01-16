@@ -1,5 +1,5 @@
-import {IActionIsLoading} from '../../interface/interface';
-import {SET_LOADING} from './actions';
+import { IActionIsLoading } from '../../interface/interface';
+import { SET_LOADING } from './actions';
 
 export const getIsLoading = (state: boolean) => state;
 

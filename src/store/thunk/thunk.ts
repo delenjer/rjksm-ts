@@ -1,6 +1,7 @@
 import { getArtCollections, getInfo } from '../../api/api';
 import {setArtCollections} from '../artCollectionsReducer/actions';
 import { setLoading } from '../loadReducer/actions';
+import { setLoadingContent } from '../isLoadingContentReducer/actions';
 import { setInfo } from '../infoReducer/actions';
 import { setError } from '../errorMessageReducer/actions';
 
@@ -16,10 +17,10 @@ export const loadingArtCollections = (currentPage: number, pageSize: number, que
 };
 
 export const loadInfo = (infoId: string) => (dispatch: (arg: { type: string }) => void) => {
-  // dispatch(setLoading(true));
+  dispatch(setLoadingContent(true));
   getInfo(infoId).then(async (data) => {
     dispatch(await setInfo(data));
-    // dispatch(setLoading(false));
+    dispatch(setLoadingContent(false));
   }).catch(() => {
     dispatch(setError(true));
   });

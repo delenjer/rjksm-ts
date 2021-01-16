@@ -26,7 +26,6 @@ const loadingArtItemsReducer = (state = initialState, action:IActionSetCurrentPa
       };
 
     case SET_TOTAL_COUNT:
-      console.log(action.num);
       return {
         ...state,
         totalPicturesCount: action.num,

@@ -8,6 +8,7 @@ import *as selectors from '../../store/store';
 import { setButtonList, setButtonText } from '../../store/btnListReducer/actions';
 import { setCurrentPage, setLoadItemsOnPage } from '../../store/loadingArtItemsReducer/actions';
 import { loadingArtCollections } from "../../store/thunk/thunk";
+import { LoadCollectionItemsBtn } from "../LoadCollectionItemsBtn/LoadCollectionItemsBtn";
 
 export const Footer: React.FC = () => {
   useSelector((state:IState) => selectors.getBtnList(state));
@@ -29,13 +30,13 @@ export const Footer: React.FC = () => {
     dispatch(setButtonList(document.querySelectorAll('.load-items__btn')));
   }, [dispatch]);
 
-  const handleLoadItem = (e:React.MouseEvent<HTMLButtonElement>) => {
+  const handleLoadItem = (e:React.MouseEvent<HTMLButtonElement>): void => {
     const { innerHTML } = e.target as HTMLButtonElement;
 
     dispatch(setLoadItemsOnPage(+innerHTML));
   };
 
-  const handlerGetButtonText = (e:React.MouseEvent<HTMLButtonElement>) => {
+  const handlerGetButtonText = (e:React.MouseEvent<HTMLButtonElement>): void => {
     const { innerHTML } = e.target as HTMLButtonElement;
 
     dispatch(setButtonText(innerHTML));
@@ -62,38 +63,26 @@ export const Footer: React.FC = () => {
         />
 
         <div className="load-items">
-          <button
-            type="button"
+          <LoadCollectionItemsBtn
             className="load-items__btn active-btn"
-            onClick={(e:React.MouseEvent<HTMLButtonElement>) => {
-              handleLoadItem(e);
-              handlerGetButtonText(e);
-            }}
-          >
-            10
-          </button>
+            handleLoadItem={handleLoadItem}
+            handlerGetButtonText={handlerGetButtonText}
+            children={10}
+          />
 
-          <button
-            type="button"
-            className="load-items__btn"
-            onClick={(e:React.MouseEvent<HTMLButtonElement>) => {
-              handleLoadItem(e);
-              handlerGetButtonText(e);
-            }}
-          >
-            50
-          </button>
+          <LoadCollectionItemsBtn
+            className="load-items__btn active-btn"
+            handleLoadItem={handleLoadItem}
+            handlerGetButtonText={handlerGetButtonText}
+            children={50}
+          />
 
-          <button
-            type="button"
-            className="load-items__btn"
-            onClick={(e:React.MouseEvent<HTMLButtonElement>) => {
-              handleLoadItem(e);
-              handlerGetButtonText(e);
-            }}
-          >
-            100
-          </button>
+          <LoadCollectionItemsBtn
+            className="load-items__btn active-btn"
+            handleLoadItem={handleLoadItem}
+            handlerGetButtonText={handlerGetButtonText}
+            children={100}
+          />
         </div>
       </footer>
     </>

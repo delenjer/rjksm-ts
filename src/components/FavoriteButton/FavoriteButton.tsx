@@ -1,13 +1,14 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import { setFavorite } from "../../store/favoriteReducer/actions";
 import { setFavoriteItem } from "../../store/favoriteListReducer/actions";
+import {IState} from "../../interface/interface";
+import * as selectors from "../../store/store";
 
 type propsFavoriteButton = {
   art: { objectNumber: string, };
   getFavorite: string[];
-  getFavoriteList: [];
   artObjects: [
     {
       webImage: {url: string};
@@ -16,10 +17,13 @@ type propsFavoriteButton = {
   ];
 }
 
-export const FavoriteButton: React.FC<propsFavoriteButton> = ({ art, getFavorite, artObjects, getFavoriteList }) => {
+export const FavoriteButton: React.FC<propsFavoriteButton> = (
+  { art,
+    getFavorite,
+    artObjects,
+  }) => {
+  const getFavoriteList = useSelector((state:IState) => selectors.getFavoriteList(state));
   const dispatch = useDispatch();
-
-  console.log(artObjects);
 
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();

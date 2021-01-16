@@ -8,6 +8,7 @@ import artCollectionsReducer, *as selectorsArtCollections from './artCollections
 import loadingArtItemsReducer, *as selectorsLoadingArtItems from './loadingArtItemsReducer/index';
 import btnListReducer, *as selectorsBtnList from './btnListReducer/index';
 import loadReducer, *as selectorsIsLoading from './loadReducer/index';
+import isLoadingContentReducer, *as selectorsIsLoadingContent from './isLoadingContentReducer/index';
 import infoReducer, * as selectorsInfo from './infoReducer/index';
 import favoriteReducer, * as selectorsFavorite from './favoriteReducer/index';
 import favoriteListReducer, * as selectorsFavoriteList from './favoriteListReducer/index';
@@ -30,6 +31,9 @@ export const getInfo = (state: any) => selectorsInfo
 
 export const getIsLoading = (state: IState) => selectorsIsLoading
   .getIsLoading(state.isLoading);
+
+export const isLoadingContent = (state: IState) => selectorsIsLoadingContent
+  .getIsLoadingContent(state.isLoadingContent);
 
 export const getBtnList = (state: IState) => {
   const buttonList = selectorsBtnList.getBtnList(state.btnList);
@@ -59,6 +63,7 @@ const rootReducer = combineReducers({
   isFavoriteList: favoriteListReducer,
   isActiveModal: modalWindowReducer,
   isError: errorMessageReducer,
+  isLoadingContent: isLoadingContentReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools(
